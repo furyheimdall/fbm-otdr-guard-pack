@@ -1,53 +1,57 @@
 # Contributing
 
-English README canon is the single source of truth for scope. Keep the locked package seats. Do not open PRs for OUT scope.
+English README canon (marketing LOCK) is the single source of truth for scope. Keep the locked package seats. Do not open PRs for OUT / Hold scope.
 
 ## Keep these seats
 
 | Seat | Path |
 | --- | --- |
-| OTDR risk scorecard | `otdr/` |
-| Stated-vs-actual handling delta | `handling/` |
-| SSA / AHT / Buy Shipping (Veeqo) exception checklist | `exceptions/` |
-| B2B hours segment | `b2b/` |
-| FBM↔FBA margin flip | `flip/` |
-| UK subset (AHT + B2B) | `uk/` |
+| Per-SKU OTDR risk score | `otdr/` |
+| Handling time stated vs actual delta; AHT auto-enable candidates | `handling/` |
+| Protection-triad checklist: AHT + SSA + Buy Shipping (or Veeqo) | `exceptions/` |
+| B2B / business-hours segment + hours config gap (BHDR → deact risk) | `b2b/` |
+| At-risk SKU FBM↔FBA margin flip (narrative only) | `flip/` |
+| Slack/email before BHDR / deactivation cliffs | `alerts/` |
+| UK = AHT + B2B subset | `uk/` |
 | Thin docs / pack assembly | `pack/` |
 | CLI | `cmd/fogp/` |
 
 Add implementation inside an existing seat. Do not invent sibling product surfaces.
 
-## Do not open PRs for OUT scope
+## Do not open PRs for OUT / Hold scope
 
-OUT of the locked MVP (see README):
+OUT / Hold of the locked MVP (see README):
 
-- 3PL / SellerLegend
-- Commingled-Exit
-- Peak Fee
-- customs / IOSS / MRN
-- Helium10 / Keepa
-- existing tracks (ARAP / CDS / CICS / OTM / DRC / Deadbugz)
+- Full 3PL / SellerLegend profit suite me-too
+- FBA Commingled-Exit Label & Lot-Cost / FNSKU stickerless (Watch)
+- FBA Peak Fee Margin Guard (Watch)
+- Decision C: customs / IOSS / MRN
+- Prep printer / Helium10/Keepa me-too
+- Gift address / Spend-by-URL (Watch)
+- Deadbugz / DRC / OTM / ARAP / CDS / CICS
 
 PRs that add those surfaces will be closed.
 
 ## Anchors
 
-**Thin-SKU EU FBM ops guard.**
+**OTDR slips. Handling lies on the clock.**
 
-**Not a profit suite. Not a prep stack.**
+**DE/UK first. Not a 3PL suite / prep/label tool.**
 
 | Anchor | Meaning |
 | --- | --- |
-| Thin-SKU EU FBM ops guard. | Day-1 seats score OTDR, handling delta, SSA/AHT/Buy Shipping exceptions, B2B hours, and FBM↔FBA flip on DE/UK. This is not a 3PL or SellerLegend replacement. |
-| Not a profit suite. | Margin flip is a signal, not a profit dashboard or Helium10/Keepa suite. |
-| Not a prep stack. | Handling and exceptions stay checklists. This is not inbound prep, Commingled-Exit, Peak Fee, or customs/IOSS/MRN. |
+| OTDR slips. | Per-SKU Order Defect Rate can move on a rolling window (volume-exemption aware where documented). This is a risk scorecard, not a 3PL or SellerLegend profit suite. |
+| Handling lies on the clock. | Stated handling time can diverge from actual. Delta + AHT auto-enable candidates are findings. This is not a prep/label tool. |
+
+## Position
+
+SellerLegend = profit/analytics · Subke = 3PL · **we = SKU compliance guard + checklist before cliffs**. Not a prep/label tool.
 
 ## Copy rules
 
 - No heavy SaaS landing
-- Do not position as a profit suite or prep stack
-- Adjacent tracks (ARAP/CDS/CICS/OTM/DRC/Deadbugz) = side-by-side only; product merge forbidden
-- 3PL/SellerLegend, Commingled-Exit, Peak Fee, customs/IOSS/MRN, Helium10/Keepa stay OUT
+- Protection triad: orders on AHT+SSA+Buy Shipping not adversely counted for OTDR/BHDR (LDR still applies) — cite Amazon defs carefully
+- Helium10/SellerLegend comps = internal differentiation only
 
 About paste and Topics stay in [docs/launch-note.md](docs/launch-note.md) as notes only. Do not set GitHub Topics via API.
 
@@ -58,7 +62,7 @@ go test ./...
 go run ./cmd/fogp pack
 ```
 
-Tests must not require live network. Pack assembly uses fixtures when other seats are still stubs. Do not add a profit suite or prep stack. See [docs/run.md](docs/run.md).
+Tests must not require live network. Pack assembly uses fixtures when other seats are still stubs. Do not add a 3PL suite or prep/label tool. See [docs/run.md](docs/run.md).
 
 ## Issues
 

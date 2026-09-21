@@ -16,6 +16,9 @@ func TestFixtureWindow(t *testing.T) {
 	if got := h.Window(); got != 8 {
 		t.Fatalf("Window = %d, want 8", got)
 	}
+	if !h.HoursConfigGap {
+		t.Fatal("expected hours config gap")
+	}
 }
 
 func TestInvalidWindow(t *testing.T) {

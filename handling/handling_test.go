@@ -19,6 +19,9 @@ func TestFixtureDelta(t *testing.T) {
 	if !d.Late() {
 		t.Fatal("expected fixture to be late")
 	}
+	if !d.AHTAutoEnable {
+		t.Fatal("expected AHT auto-enable candidate")
+	}
 }
 
 func TestOnTime(t *testing.T) {

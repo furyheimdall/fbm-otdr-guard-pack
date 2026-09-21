@@ -6,15 +6,14 @@ About paste and Topics below are launch copy notes only. Record them here so lau
 
 ## About paste (launch)
 
-FBM OTDR Guard Pack — thin-SKU FBM OTDR/handling/SSA-AHT/B2B hours + FBM↔FBA margin flip. DE/UK first. Thin OSS Go. Not a profit suite.
+FBM OTDR Guard Pack — thin-SKU FBM OTDR/handling/B2B hours risk scorecard for DE/UK. Exception checklist + FBM↔FBA flip. Thin OSS pack. Not a 3PL suite.
 
 ## Topics (launch)
 
-fbm, otdr, amazon, handling-time, fba, germany, uk, oss
+amazon-fbm, otdr, seller-central, germany, uk, b2b, veeqo, oss
 
 ## Copy rules reminder
 
 - No heavy SaaS landing
-- Do not position as a profit suite or prep stack
-- Adjacent tracks (ARAP/CDS/CICS/OTM/DRC/Deadbugz) = side-by-side only; product merge forbidden
-- 3PL/SellerLegend, Commingled-Exit, Peak Fee, customs/IOSS/MRN, Helium10/Keepa stay OUT
+- Protection triad: orders on AHT+SSA+Buy Shipping not adversely counted for OTDR/BHDR (LDR still applies) — cite Amazon defs carefully
+- Helium10/SellerLegend comps = internal differentiation only

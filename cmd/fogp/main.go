@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/furyheimdall/fbm-otdr-guard-pack/alerts"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/b2b"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/exceptions"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/flip"
@@ -42,8 +43,9 @@ func run(args []string, w io.Writer) int {
 func writeHelp(w io.Writer) int {
 	fmt.Fprint(w, `FBM OTDR Guard Pack — fogp
 
-Thin-SKU FBM guard — OTDR risk scorecard + stated-vs-actual handling delta + SSA/AHT/Buy Shipping(Veeqo) exception checklist + B2B hours segment + FBM↔FBA margin flip. DE/UK first.
-Thin-SKU EU FBM ops guard. Not a profit suite. Not a prep stack.
+Thin-SKU FBM guard — OTDR risk scorecard + stated-vs-actual handling delta + SSA/AHT/Buy Shipping(Veeqo) exception checklist + B2B business-hours segment + FBM↔FBA margin flip. DE/UK first.
+OTDR slips. Handling lies on the clock.
+Not a 3PL suite / prep/label tool.
 
 Usage:
   fogp          print package seats
@@ -51,7 +53,7 @@ Usage:
   fogp pack     render the fixture pack
   fogp help     print this help
 
-No network. Not a profit suite / not a prep stack. Product merge with ARAP/CDS/CICS/OTM/DRC/Deadbugz forbidden.
+No network. Not a 3PL suite / not a prep/label tool. Product merge with Deadbugz/DRC/OTM/ARAP/CDS/CICS forbidden.
 `)
 	return 0
 }
@@ -78,6 +80,7 @@ func seats() []string {
 		exceptions.Seat,
 		b2b.Seat,
 		flip.Seat,
+		alerts.Seat,
 		uk.Seat,
 		pack.Seat,
 	}

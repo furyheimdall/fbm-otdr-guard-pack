@@ -1,6 +1,7 @@
-// Package flip is the FBM↔FBA margin flip seat.
+// Package flip is the at-risk SKU FBM↔FBA margin flip seat.
 //
-// Margin flip is a signal, not a profit suite and not Helium10/Keepa.
+// Profit narrative only — not auto-enrollment, not a 3PL suite,
+// not Helium10/Keepa.
 package flip
 
 // Seat is the locked package seat name.

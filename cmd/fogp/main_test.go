@@ -11,7 +11,7 @@ func TestSeats(t *testing.T) {
 		t.Fatalf("exit %d", code)
 	}
 	got := b.String()
-	for _, seat := range []string{"otdr", "handling", "exceptions", "b2b", "flip", "uk", "pack"} {
+	for _, seat := range []string{"otdr", "handling", "exceptions", "b2b", "flip", "alerts", "uk", "pack"} {
 		if !strings.Contains(got, seat) {
 			t.Fatalf("missing seat %q in %q", seat, got)
 		}
@@ -24,7 +24,7 @@ func TestHelp(t *testing.T) {
 		t.Fatalf("exit %d", code)
 	}
 	out := b.String()
-	for _, want := range []string{"Not a profit suite", "Not a prep stack", "Thin-SKU EU FBM ops guard"} {
+	for _, want := range []string{"OTDR slips", "Handling lies on the clock", "Not a 3PL suite", "prep/label tool"} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("help missing %q: %q", want, out)
 		}
@@ -39,7 +39,7 @@ func TestUnknown(t *testing.T) {
 }
 
 func TestSeatsList(t *testing.T) {
-	if len(seats()) != 7 {
+	if len(seats()) != 8 {
 		t.Fatalf("seats = %v", seats())
 	}
 }
@@ -50,7 +50,7 @@ func TestPack(t *testing.T) {
 		t.Fatalf("exit %d, out=%q", code, b.String())
 	}
 	out := b.String()
-	for _, want := range []string{"FBM OTDR Guard Pack", "Thin-SKU EU FBM ops guard.", "otdr.sku:"} {
+	for _, want := range []string{"FBM OTDR Guard Pack", "OTDR slips. Handling lies on the clock.", "otdr.sku:"} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("pack missing %q:\n%s", want, out)
 		}

@@ -1,7 +1,7 @@
-// Package exceptions is the SSA / AHT / Buy Shipping (Veeqo) checklist seat.
+// Package exceptions is the protection-triad checklist seat.
 //
-// Exceptions stay a checklist. This is not a 3PL, SellerLegend, or
-// Veeqo replacement.
+// AHT + SSA + Buy Shipping (or Veeqo): which SKUs/orders lack
+// coverage. Checklist only — not a 3PL suite.
 package exceptions
 
 // Seat is the locked package seat name.

@@ -1,63 +1,71 @@
 # FBM OTDR Guard Pack
 
-Thin-SKU FBM guard — OTDR risk scorecard + stated-vs-actual handling delta + SSA/AHT/Buy Shipping(Veeqo) exception checklist + B2B hours segment + FBM↔FBA margin flip. DE/UK first.
+Thin-SKU FBM guard — OTDR risk scorecard + stated-vs-actual handling delta + SSA/AHT/Buy Shipping(Veeqo) exception checklist + B2B business-hours segment + FBM↔FBA margin flip. **DE/UK first.**
 
-**Thin-SKU EU FBM ops guard.**
+**OTDR slips. Handling lies on the clock.**
 
-**Not a profit suite. Not a prep stack.**
+**DE/UK first. Not a 3PL suite / prep/label tool.**
 
-English is the single source of truth. Thin OSS Go pack — not a profit suite, not a prep stack.
+English is the single source of truth. Thin OSS Go pack — not a 3PL suite, not a prep/label tool.
 
 ## Anchors
 
 | Anchor | Meaning |
 | --- | --- |
-| Thin-SKU EU FBM ops guard. | Day-1 seats score OTDR, handling delta, SSA/AHT/Buy Shipping exceptions, B2B hours, and FBM↔FBA flip on DE/UK. This is not a 3PL or SellerLegend replacement. |
-| Not a profit suite. | Margin flip is a signal, not a profit dashboard or Helium10/Keepa suite. |
-| Not a prep stack. | Handling and exceptions stay checklists. This is not inbound prep, Commingled-Exit, Peak Fee, or customs/IOSS/MRN. |
+| OTDR slips. | Per-SKU Order Defect Rate can move on a rolling window (volume-exemption aware where documented). This is a risk scorecard, not a 3PL or SellerLegend profit suite. |
+| Handling lies on the clock. | Stated handling time can diverge from actual. Delta + AHT auto-enable candidates are findings. This is not a prep/label tool. |
 
 ## ICP
 
-- Thin-SKU EU FBM operators (DE/UK first)
-- Buyer: EU FBM ops lead; agency EU marketplace ops = influencer
-- Why now: OTDR risk + stated-vs-actual handling + SSA/AHT/Buy Shipping (Veeqo) exceptions + B2B hours segment + FBM↔FBA margin flip
-- Adjacent (not merge): Auth Rate Audit Pack, CAPI Dedup Scorecard, Call-ID Continuity Scorecard, Offer Truth Monitor, Deposit Return Clock, Deadbugz
+- Amazon FBM sellers on DE (UK for AHT + B2B hours); thin-/multi-SKU portfolios
+- Buyer: seller ops / account health lead; agencies/3PL advisors = influencers
+- Why now: DE OTDR 90% (~2026-07-15, listing risk ~09-01); AHT auto ~09-01; business-hours 90% ~09-30 → B2B deact risk ~10-30
 
 ## Day-1 IN
 
-1. OTDR risk scorecard
-2. Stated-vs-actual handling delta
-3. SSA / AHT / Buy Shipping (Veeqo) exception checklist
-4. B2B hours segment
-5. FBM↔FBA margin flip
-6. UK subset (AHT + B2B)
-7. Thin docs / pack assembly
+1. Per-SKU OTDR risk score (rolling window / volume exemption aware where documented)
+2. Handling time stated vs actual delta; flag AHT auto-enable candidates
+3. Protection-triad checklist: AHT + SSA + Buy Shipping (or Veeqo) — which SKUs/orders lack coverage
+4. B2B / business-hours delivery segment + hours config gap (BHDR → deact risk)
+5. At-risk SKU FBM↔FBA margin flip suggestion (profit narrative only — not auto-enrollment)
+6. Slack/email before BHDR / deactivation cliffs
+7. UK = AHT + B2B subset
 
-## OUT
+## OUT / Hold
 
-3PL/SellerLegend · Commingled-Exit · Peak Fee · customs/IOSS/MRN · Helium10/Keepa · existing tracks (ARAP/CDS/CICS/OTM/DRC/Deadbugz)
+- Full 3PL / SellerLegend profit suite me-too
+- FBA Commingled-Exit Label & Lot-Cost / FNSKU stickerless (Watch)
+- FBA Peak Fee Margin Guard (Watch)
+- Decision C: customs / IOSS / MRN
+- Prep printer / Helium10/Keepa me-too
+- Gift address / Spend-by-URL (Watch)
+- Deadbugz / DRC / OTM / ARAP / CDS / CICS
+
+## Position
+
+SellerLegend = profit/analytics · Subke = 3PL · **we = SKU compliance guard + checklist before cliffs**. Not a prep/label tool.
 
 ## Copy rules
 
 - No heavy SaaS landing
-- Do not position as a profit suite or prep stack
-- Adjacent tracks (ARAP/CDS/CICS/OTM/DRC/Deadbugz) = side-by-side only; product merge forbidden
-- 3PL/SellerLegend, Commingled-Exit, Peak Fee, customs/IOSS/MRN, Helium10/Keepa stay OUT
+- Protection triad: orders on AHT+SSA+Buy Shipping not adversely counted for OTDR/BHDR (LDR still applies) — cite Amazon defs carefully
+- Helium10/SellerLegend comps = internal differentiation only
 
 ## Package seats
 
 | Package | Seat |
 | --- | --- |
-| [`otdr/`](otdr/) | OTDR risk scorecard |
-| [`handling/`](handling/) | Stated-vs-actual handling delta |
-| [`exceptions/`](exceptions/) | SSA / AHT / Buy Shipping (Veeqo) exception checklist |
-| [`b2b/`](b2b/) | B2B hours segment |
-| [`flip/`](flip/) | FBM↔FBA margin flip |
-| [`uk/`](uk/) | UK subset (AHT + B2B) |
+| [`otdr/`](otdr/) | Per-SKU OTDR risk score (rolling window / volume exemption aware where documented) |
+| [`handling/`](handling/) | Handling time stated vs actual delta; flag AHT auto-enable candidates |
+| [`exceptions/`](exceptions/) | Protection-triad checklist: AHT + SSA + Buy Shipping (or Veeqo) — which SKUs/orders lack coverage |
+| [`b2b/`](b2b/) | B2B / business-hours delivery segment + hours config gap (BHDR → deact risk) |
+| [`flip/`](flip/) | At-risk SKU FBM↔FBA margin flip suggestion (profit narrative only — not auto-enrollment) |
+| [`alerts/`](alerts/) | Slack/email before BHDR / deactivation cliffs |
+| [`uk/`](uk/) | UK = AHT + B2B subset |
 | [`pack/`](pack/) | Thin docs / pack assembly — assembles the other seats from interfaces/fixtures |
 | [`cmd/fogp/`](cmd/fogp/) | CLI stub (prints seat names or help; no network in tests) |
 
-Seats are fixture-backed stubs. Tests must not use the network. Do not add OUT-scope packages. Adjacent tracks (ARAP/CDS/CICS/OTM/DRC/Deadbugz) stay side-by-side; product merge is forbidden.
+Seats are fixture-backed stubs. Tests must not use the network. Do not add OUT / Hold packages. Adjacent tracks (Deadbugz / DRC / OTM / ARAP / CDS / CICS) stay side-by-side; product merge is forbidden.
 
 ## Develop
 

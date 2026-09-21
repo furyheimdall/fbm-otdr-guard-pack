@@ -1,6 +1,6 @@
 // Package uk is the UK AHT + B2B subset seat.
 //
-// UK first alongside DE. This is a subset, not a UK customs/IOSS/MRN pack.
+// UK = AHT + B2B subset. Not a customs/IOSS/MRN pack and not a 3PL suite.
 package uk
 
 // Seat is the locked package seat name.

@@ -1,7 +1,7 @@
-// Package otdr is the OTDR risk scorecard seat.
+// Package otdr is the per-SKU OTDR risk score seat.
 //
-// Thin-SKU EU FBM ops guard. OTDR is a scorecard finding, not a
-// profit suite and not a prep stack.
+// OTDR slips. Rolling-window / volume-exemption aware where
+// documented. Not a 3PL suite.
 package otdr
 
 // Seat is the locked package seat name.

@@ -1,8 +1,8 @@
 // Package pack assembles the guard seats from interfaces/fixtures.
 //
-// Thin OSS pack assembly only. Thin-SKU EU FBM ops guard.
-// Not a profit suite. Not a prep stack. Product merge with
-// ARAP/CDS/CICS/OTM/DRC/Deadbugz forbidden.
+// Thin OSS pack assembly only. OTDR slips. Handling lies on the clock.
+// Not a 3PL suite / prep/label tool. Product merge with
+// Deadbugz/DRC/OTM/ARAP/CDS/CICS forbidden.
 package pack
 
 import (
@@ -10,6 +10,7 @@ import (
 	"io"
 	"strings"
 
+	"github.com/furyheimdall/fbm-otdr-guard-pack/alerts"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/b2b"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/exceptions"
 	"github.com/furyheimdall/fbm-otdr-guard-pack/flip"
@@ -29,6 +30,7 @@ func Seats() []string {
 		exceptions.Seat,
 		b2b.Seat,
 		flip.Seat,
+		alerts.Seat,
 		uk.Seat,
 		Seat,
 	}
@@ -41,9 +43,10 @@ type Snapshot struct {
 	Exceptions  exceptions.Checklist
 	B2B         b2b.Hours
 	Flip        flip.Margin
+	Alert       alerts.Signal
 	UK          uk.Subset
 	Product     string
-	NotProfit   bool
+	Not3PL      bool
 	NotPrep     bool
 	MergeForbid bool
 }
@@ -56,9 +59,10 @@ func FromFixtures() Snapshot {
 		Exceptions:  exceptions.Fixture(),
 		B2B:         b2b.Fixture(),
 		Flip:        flip.Fixture(),
+		Alert:       alerts.FixtureBHDR(),
 		UK:          uk.Fixture(),
 		Product:     "FBM OTDR Guard Pack",
-		NotProfit:   true,
+		Not3PL:      true,
 		NotPrep:     true,
 		MergeForbid: true,
 	}
@@ -68,15 +72,16 @@ func FromFixtures() Snapshot {
 func Render(w io.Writer, s Snapshot) error {
 	var b strings.Builder
 	fmt.Fprintf(&b, "product: %s\n", s.Product)
-	fmt.Fprintf(&b, "anchors: Thin-SKU EU FBM ops guard. Not a profit suite. Not a prep stack.\n")
-	fmt.Fprintf(&b, "not: profit-suite prep-stack\n")
-	fmt.Fprintf(&b, "merge_forbidden: %t (ARAP/CDS/CICS/OTM/DRC/Deadbugz side-by-side only)\n", s.MergeForbid)
+	fmt.Fprintf(&b, "anchors: OTDR slips. Handling lies on the clock.\n")
+	fmt.Fprintf(&b, "not: 3pl-suite prep-label-tool\n")
+	fmt.Fprintf(&b, "merge_forbidden: %t (Deadbugz/DRC/OTM/ARAP/CDS/CICS side-by-side only)\n", s.MergeForbid)
 	fmt.Fprintf(&b, "otdr.sku: %s marketplace=%s rate=%.2f risk=%s\n",
 		s.OTDR.SKU, s.OTDR.Marketplace, s.OTDR.Rate, s.OTDR.Risk())
-	fmt.Fprintf(&b, "handling.delta: %d late=%t\n", s.Handling.Days(), s.Handling.Late())
+	fmt.Fprintf(&b, "handling.delta: %d late=%t aht_auto=%t\n", s.Handling.Days(), s.Handling.Late(), s.Handling.AHTAutoEnable)
 	fmt.Fprintf(&b, "exceptions.open: %d\n", s.Exceptions.OpenCount())
-	fmt.Fprintf(&b, "b2b.window: %d\n", s.B2B.Window())
+	fmt.Fprintf(&b, "b2b.window: %d hours_gap=%t\n", s.B2B.Window(), s.B2B.HoursConfigGap)
 	fmt.Fprintf(&b, "flip.prefer: %s flip=%t\n", s.Flip.Prefer(), s.Flip.Flip())
+	fmt.Fprintf(&b, "alert: %s\n", s.Alert.Kind)
 	fmt.Fprintf(&b, "uk.marketplace: %s aht=%d b2b_window=%d\n",
 		s.UK.Marketplace, s.UK.AHTDays, s.UK.B2BWindow())
 	_, err := io.WriteString(w, b.String())
